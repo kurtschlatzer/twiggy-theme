@@ -31,7 +31,7 @@ class __TwigTemplate_e9af1d002fda54d3b3c1b8ebd590818f6d2bb0d01be18ae1d2bfa69bf55
                 echo "            <ol class=\"media-list\">
                 ";
                 // line 7
-                echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_list_comments", array(0 => array("walker" => $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "returnObject", array(0 => "sprig_Walker_Comment"), "method")), 1 => (isset($context["comments"]) ? $context["comments"] : null)), "method");
+                echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_list_comments", array(0 => array("walker" => $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "returnObject", array(0 => "twiggy_Walker_Comment"), "method")), 1 => (isset($context["comments"]) ? $context["comments"] : null)), "method");
                 echo "
             </ol>
             ";

@@ -34,30 +34,30 @@ class __TwigTemplate_de22be7b5772f84ecada397531558fce1472ee23fdeea715e29b497e94a
     </div>
 
     <nav class=\"collapse navbar-collapse\" role=\"navigation\">
-        ";
+      ";
         // line 14
         if ($this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "has_nav_menu", array(0 => "primary_navigation"), "method")) {
             // line 15
-            echo "            <div class=\"collapse navbar-collapse\">
-                ";
+            echo "      <div class=\"collapse navbar-collapse\">
+        ";
             // line 16
             echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_nav_menu", array(0 => array("theme_location" => "primary_navigation", "menu_class" => "nav navbar-nav", "walker" => $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "returnObject", array(0 => "wp_bootstrap_navwalker"), "method"), "container" => false, "depth" => 2, "fallback_cb" => "wp_bootstrap_navwalker::fallback")), "method");
             // line 23
             echo "
-                <form id=\"searchform\" class=\"navbar-form navbar-right\" role=\"search\" action=\"";
+        <form id=\"searchform\" class=\"navbar-form navbar-right\" role=\"search\" action=\"";
             // line 24
             echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "site_url", array(), "method");
             echo "\" method=\"get\">
-                    <div class=\"form-group\">
-                        <input id=\"s\" name=\"s\" type=\"text\" class=\"form-control\" placeholder=\"\" value=\"";
+          <div class=\"form-group\">
+            <input id=\"s\" name=\"s\" type=\"text\" class=\"form-control\" placeholder=\"\" value=\"";
             // line 26
             echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "get_search_query", array(), "method");
             echo "\">
-                    </div>
-                    <button id=\"searchsubmit\" type=\"submit\" class=\"btn btn-default\">Search</button>
-                </form>
-            </div>
-        ";
+          </div>
+          <button id=\"searchsubmit\" type=\"submit\" class=\"btn btn-default\">Search</button>
+        </form>
+      </div>
+      ";
         }
         // line 32
         echo "    </nav>

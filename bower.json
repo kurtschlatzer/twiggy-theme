@@ -1,9 +1,9 @@
 {
-  "name": "sprig",
+  "name": "twiggy-theme",
   "version": "1.0.0",
-  "homepage": "http://zach-adams.com",
+  "homepage": "",
   "authors": [
-    "Zach Adams <zach.adams383@gmail.com>"
+    "Kurt Schlatzer <kurtschlatzer@gmail.com>"
   ],
   "private": true,
   "ignore": [

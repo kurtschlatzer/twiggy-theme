@@ -1,13 +1,14 @@
 <?php
 /**
- * Sprig initial setup and constants
+ * Twiggy initial setup and constants
  */
-function sprig_setup() {
+function twiggy_setup() {
 
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'sprig')
+    'primary_navigation' => __('Primary Navigation', 'twiggy'),
+    'footer_navigation'  => __('Footer Navigation', 'twiggy')
   ));
 
   // Add post thumbnails
@@ -20,14 +21,14 @@ function sprig_setup() {
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
   add_theme_support('html5', array('caption'));
 }
-add_action('after_setup_theme', 'sprig_setup');
+add_action('after_setup_theme', 'twiggy_setup');
 
 /**
  * Register sidebars
  */
-function sprig_widgets_init() {
+function twiggy_widgets_init() {
   register_sidebar(array(
-    'name'          => __('Primary', 'sprig'),
+    'name'          => __('Primary', 'twiggy'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
@@ -35,4 +36,4 @@ function sprig_widgets_init() {
     'after_title'   => '</h3>',
   ));
 }
-add_action('widgets_init', 'sprig_widgets_init');
+add_action('widgets_init', 'twiggy_widgets_init');

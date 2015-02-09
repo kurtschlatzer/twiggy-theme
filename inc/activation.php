@@ -7,29 +7,29 @@ if (is_admin() && isset($_GET['activated']) && 'themes.php' == $GLOBALS['pagenow
   exit;
 }
 
-function sprig_theme_activation_options_init() {
+function twiggy_theme_activation_options_init() {
   register_setting(
-    'sprig_activation_options',
-    'sprig_theme_activation_options'
+    'twiggy_activation_options',
+    'twiggy_theme_activation_options'
   );
 }
-add_action('admin_init', 'sprig_theme_activation_options_init');
+add_action('admin_init', 'twiggy_theme_activation_options_init');
 
-function sprig_activation_options_page_capability($capability) {
+function twiggy_activation_options_page_capability($capability) {
   return 'edit_theme_options';
 }
-add_filter('option_page_capability_sprig_activation_options', 'sprig_activation_options_page_capability');
+add_filter('option_page_capability_twiggy_activation_options', 'twiggy_activation_options_page_capability');
 
-function sprig_theme_activation_options_add_page() {
-  $sprig_activation_options = sprig_get_theme_activation_options();
+function twiggy_theme_activation_options_add_page() {
+  $twiggy_activation_options = twiggy_get_theme_activation_options();
 
-  if (!$sprig_activation_options) {
+  if (!$twiggy_activation_options) {
     $theme_page = add_theme_page(
-      __('Theme Activation', 'sprig'),
-      __('Theme Activation', 'sprig'),
+      __('Theme Activation', 'twiggy'),
+      __('Theme Activation', 'twiggy'),
       'edit_theme_options',
       'theme_activation_options',
-      'sprig_theme_activation_options_render_page'
+      'twiggy_theme_activation_options_render_page'
     );
   } else {
     if (is_admin() && isset($_GET['page']) && $_GET['page'] === 'theme_activation_options') {
@@ -39,68 +39,68 @@ function sprig_theme_activation_options_add_page() {
     }
   }
 }
-add_action('admin_menu', 'sprig_theme_activation_options_add_page', 50);
+add_action('admin_menu', 'twiggy_theme_activation_options_add_page', 50);
 
-function sprig_get_theme_activation_options() {
-  return get_option('sprig_theme_activation_options');
+function twiggy_get_theme_activation_options() {
+  return get_option('twiggy_theme_activation_options');
 }
 
-function sprig_theme_activation_options_render_page() { ?>
+function twiggy_theme_activation_options_render_page() { ?>
   <div class="wrap">
-    <h2><?php printf(__('%s Theme Activation', 'sprig'), wp_get_theme()); ?></h2>
+    <h2><?php printf(__('%s Theme Activation', 'twiggy'), wp_get_theme()); ?></h2>
     <div class="update-nag">
-      <?php _e('These settings are optional and should usually be used only on a fresh installation', 'sprig'); ?>
+      <?php _e('These settings are optional and should usually be used only on a fresh installation', 'twiggy'); ?>
     </div>
     <?php settings_errors(); ?>
 
     <form method="post" action="options.php">
-      <?php settings_fields('sprig_activation_options'); ?>
+      <?php settings_fields('twiggy_activation_options'); ?>
       <table class="form-table">
-        <tr valign="top"><th scope="row"><?php _e('Create static front page?', 'sprig'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Create static front page?', 'twiggy'); ?></th>
           <td>
             <fieldset>
-              <legend class="screen-reader-text"><span><?php _e('Create static front page?', 'sprig'); ?></span></legend>
-              <select name="sprig_theme_activation_options[create_front_page]" id="create_front_page">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'sprig'); ?></option>
-                <option value="false"><?php echo _e('No', 'sprig'); ?></option>
+              <legend class="screen-reader-text"><span><?php _e('Create static front page?', 'twiggy'); ?></span></legend>
+              <select name="twiggy_theme_activation_options[create_front_page]" id="create_front_page">
+                <option selected="selected" value="true"><?php echo _e('Yes', 'twiggy'); ?></option>
+                <option value="false"><?php echo _e('No', 'twiggy'); ?></option>
               </select>
-              <p class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'sprig')); ?></p>
+              <p class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'twiggy')); ?></p>
             </fieldset>
           </td>
         </tr>
-        <tr valign="top"><th scope="row"><?php _e('Change permalink structure?', 'sprig'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Change permalink structure?', 'twiggy'); ?></th>
           <td>
             <fieldset>
-              <legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'sprig'); ?></span></legend>
-              <select name="sprig_theme_activation_options[change_permalink_structure]" id="change_permalink_structure">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'sprig'); ?></option>
-                <option value="false"><?php echo _e('No', 'sprig'); ?></option>
+              <legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'twiggy'); ?></span></legend>
+              <select name="twiggy_theme_activation_options[change_permalink_structure]" id="change_permalink_structure">
+                <option selected="selected" value="true"><?php echo _e('Yes', 'twiggy'); ?></option>
+                <option value="false"><?php echo _e('No', 'twiggy'); ?></option>
               </select>
-              <p class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'sprig')); ?></p>
+              <p class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'twiggy')); ?></p>
             </fieldset>
           </td>
         </tr>
-        <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'sprig'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'twiggy'); ?></th>
           <td>
             <fieldset>
-              <legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'sprig'); ?></span></legend>
-              <select name="sprig_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'sprig'); ?></option>
-                <option value="false"><?php echo _e('No', 'sprig'); ?></option>
+              <legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'twiggy'); ?></span></legend>
+              <select name="twiggy_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
+                <option selected="selected" value="true"><?php echo _e('Yes', 'twiggy'); ?></option>
+                <option value="false"><?php echo _e('No', 'twiggy'); ?></option>
               </select>
-              <p class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'sprig')); ?></p>
+              <p class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'twiggy')); ?></p>
             </fieldset>
           </td>
         </tr>
-        <tr valign="top"><th scope="row"><?php _e('Add pages to menu?', 'sprig'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Add pages to menu?', 'twiggy'); ?></th>
           <td>
             <fieldset>
-              <legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'sprig'); ?></span></legend>
-              <select name="sprig_theme_activation_options[add_pages_to_primary_navigation]" id="add_pages_to_primary_navigation">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'sprig'); ?></option>
-                <option value="false"><?php echo _e('No', 'sprig'); ?></option>
+              <legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'twiggy'); ?></span></legend>
+              <select name="twiggy_theme_activation_options[add_pages_to_primary_navigation]" id="add_pages_to_primary_navigation">
+                <option selected="selected" value="true"><?php echo _e('Yes', 'twiggy'); ?></option>
+                <option value="false"><?php echo _e('No', 'twiggy'); ?></option>
               </select>
-              <p class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'sprig')); ?></p>
+              <p class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'twiggy')); ?></p>
             </fieldset>
           </td>
         </tr>
@@ -111,8 +111,8 @@ function sprig_theme_activation_options_render_page() { ?>
 
 <?php }
 
-function sprig_theme_activation_action() {
-  if (!($sprig_theme_activation_options = sprig_get_theme_activation_options())) {
+function twiggy_theme_activation_action() {
+  if (!($twiggy_theme_activation_options = twiggy_get_theme_activation_options())) {
     return;
   }
 
@@ -120,10 +120,10 @@ function sprig_theme_activation_action() {
     return;
   }
 
-  if ($sprig_theme_activation_options['create_front_page'] === 'true') {
-    $sprig_theme_activation_options['create_front_page'] = false;
+  if ($twiggy_theme_activation_options['create_front_page'] === 'true') {
+    $twiggy_theme_activation_options['create_front_page'] = false;
 
-    $default_pages = array(__('Home', 'sprig'));
+    $default_pages = array(__('Home', 'twiggy'));
     $existing_pages = get_pages();
     $temp = array();
 
@@ -144,7 +144,7 @@ function sprig_theme_activation_action() {
       $result = wp_insert_post($add_default_pages);
     }
 
-    $home = get_page_by_title(__('Home', 'sprig'));
+    $home = get_page_by_title(__('Home', 'twiggy'));
     update_option('show_on_front', 'page');
     update_option('page_on_front', $home->ID);
 
@@ -155,8 +155,8 @@ function sprig_theme_activation_action() {
     wp_update_post($home_menu_order);
   }
 
-  if ($sprig_theme_activation_options['change_permalink_structure'] === 'true') {
-    $sprig_theme_activation_options['change_permalink_structure'] = false;
+  if ($twiggy_theme_activation_options['change_permalink_structure'] === 'true') {
+    $twiggy_theme_activation_options['change_permalink_structure'] = false;
 
     if (get_option('permalink_structure') !== '/%postname%/') {
       global $wp_rewrite;
@@ -165,29 +165,29 @@ function sprig_theme_activation_action() {
     }
   }
 
-  if ($sprig_theme_activation_options['create_navigation_menus'] === 'true') {
-    $sprig_theme_activation_options['create_navigation_menus'] = false;
+  if ($twiggy_theme_activation_options['create_navigation_menus'] === 'true') {
+    $twiggy_theme_activation_options['create_navigation_menus'] = false;
 
-    $sprig_nav_theme_mod = false;
+    $twiggy_nav_theme_mod = false;
 
-    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'sprig'));
+    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'twiggy'));
 
     if (!$primary_nav) {
-      $primary_nav_id = wp_create_nav_menu(__('Primary Navigation', 'sprig'), array('slug' => 'primary_navigation'));
-      $sprig_nav_theme_mod['primary_navigation'] = $primary_nav_id;
+      $primary_nav_id = wp_create_nav_menu(__('Primary Navigation', 'twiggy'), array('slug' => 'primary_navigation'));
+      $twiggy_nav_theme_mod['primary_navigation'] = $primary_nav_id;
     } else {
-      $sprig_nav_theme_mod['primary_navigation'] = $primary_nav->term_id;
+      $twiggy_nav_theme_mod['primary_navigation'] = $primary_nav->term_id;
     }
 
-    if ($sprig_nav_theme_mod) {
-      set_theme_mod('nav_menu_locations', $sprig_nav_theme_mod);
+    if ($twiggy_nav_theme_mod) {
+      set_theme_mod('nav_menu_locations', $twiggy_nav_theme_mod);
     }
   }
 
-  if ($sprig_theme_activation_options['add_pages_to_primary_navigation'] === 'true') {
-    $sprig_theme_activation_options['add_pages_to_primary_navigation'] = false;
+  if ($twiggy_theme_activation_options['add_pages_to_primary_navigation'] === 'true') {
+    $twiggy_theme_activation_options['add_pages_to_primary_navigation'] = false;
 
-    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'sprig'));
+    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'twiggy'));
     $primary_nav_term_id = (int) $primary_nav->term_id;
     $menu_items= wp_get_nav_menu_items($primary_nav_term_id);
 
@@ -205,11 +205,11 @@ function sprig_theme_activation_action() {
     }
   }
 
-  update_option('sprig_theme_activation_options', $sprig_theme_activation_options);
+  update_option('twiggy_theme_activation_options', $twiggy_theme_activation_options);
 }
-add_action('admin_init','sprig_theme_activation_action');
+add_action('admin_init','twiggy_theme_activation_action');
 
-function sprig_deactivation() {
-  delete_option('sprig_theme_activation_options');
+function twiggy_deactivation() {
+  delete_option('twiggy_theme_activation_options');
 }
-add_action('switch_theme', 'sprig_deactivation');
+add_action('switch_theme', 'twiggy_deactivation');

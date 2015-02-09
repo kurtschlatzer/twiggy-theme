@@ -21,34 +21,36 @@ class __TwigTemplate_d525107614b75d78d409d63d66439fa08b244295dd539e188072e058c19
         echo "\" ";
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "post_class", array());
         echo ">
-    <header class=\"page-header\">
-        <h1>";
+  <header class=\"page-header\">
+    <h1>";
         // line 3
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "the_title", array());
         echo "</h1>
-    </header>
-    <div class=\"entry-content\">
-        ";
+  </header>
+  <div class=\"entry-content\">
+    ";
         // line 6
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "the_content", array());
         echo "
-        ";
+    ";
         // line 7
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_link_pages", array(0 => array("echo" => "0")), "method");
         echo "
-    </div><!-- .entry-content -->
+  </div><!-- .entry-content -->
 
-    <footer class=\"entry-footer\">
-        ";
+  <footer class=\"entry-footer\">
+    ";
         // line 11
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "edit_post_link", array(0 => "Edit", 1 => "<small>", 2 => "</small>"), "method");
         echo "
-    </footer><!-- .entry-footer -->
+  </footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 <hr/>
 ";
         // line 15
         echo twig_include($this->env, $context, "includes/comments.twig");
+        echo "
+";
     }
 
     public function getTemplateName()

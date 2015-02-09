@@ -4,7 +4,7 @@
     <section id="comments">
         {% if comments is not empty %}
             <ol class="media-list">
-                {{ wp.wp_list_comments({'walker':wp.returnObject('sprig_Walker_Comment')}, comments) }}
+                {{ wp.wp_list_comments({'walker':wp.returnObject('twiggy_Walker_Comment')}, comments) }}
             </ol>
             {% if wp.get_comment_pages_count > 1 and wp.get_option('page_comments') %}
                 <nav>

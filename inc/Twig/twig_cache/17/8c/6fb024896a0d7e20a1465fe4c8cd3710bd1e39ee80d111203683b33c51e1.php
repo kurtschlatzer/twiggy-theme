@@ -28,9 +28,9 @@ class __TwigTemplate_178c6fb024896a0d7e20a1465fe4c8cd3710bd1e39ee80d111203683b33
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "    <div id=\"primary\" class=\"content-area\">
-        <main id=\"main\" class=\"site-main\" role=\"main\">
-            ";
+        echo "<div id=\"primary\" class=\"content-area\">
+  <main id=\"main\" class=\"site-main\" role=\"main\">
+    ";
         // line 6
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable(call_user_func_array($this->env->getFunction('posts')->getCallable(), array()));
@@ -50,11 +50,11 @@ class __TwigTemplate_178c6fb024896a0d7e20a1465fe4c8cd3710bd1e39ee80d111203683b33
         foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
             echo call_user_func_array($this->env->getFunction('the_post')->getCallable(), array($context["post"]));
             echo "
-                ";
+    ";
             // line 7
             $this->env->loadTemplate("content/content-page.twig")->display($context);
             // line 8
-            echo "            ";
+            echo "    ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
             $context['loop']['first'] = false;
@@ -68,8 +68,8 @@ class __TwigTemplate_178c6fb024896a0d7e20a1465fe4c8cd3710bd1e39ee80d111203683b33
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 9
-        echo "        </main><!-- #main -->
-    </div><!-- #primary -->
+        echo "  </main>
+</div>
 ";
     }
 

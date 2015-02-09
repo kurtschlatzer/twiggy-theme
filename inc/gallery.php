@@ -7,7 +7,7 @@
  *
  * @link http://getbootstrap.com/components/#thumbnails
  */
-function sprig_gallery($attr) {
+function twiggy_gallery($attr) {
   $post = get_post();
 
   static $instance = 0;
@@ -115,16 +115,16 @@ function sprig_gallery($attr) {
 }
 if (current_theme_supports('bootstrap-gallery')) {
   remove_shortcode('gallery');
-  add_shortcode('gallery', 'sprig_gallery');
+  add_shortcode('gallery', 'twiggy_gallery');
   add_filter('use_default_gallery_style', '__return_null');
 }
 
 /**
  * Add class="thumbnail img-thumbnail" to attachment items
  */
-function sprig_attachment_link_class($html) {
+function twiggy_attachment_link_class($html) {
   $postid = get_the_ID();
   $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
   return $html;
 }
-add_filter('wp_get_attachment_link', 'sprig_attachment_link_class', 10, 1);
+add_filter('wp_get_attachment_link', 'twiggy_attachment_link_class', 10, 1);

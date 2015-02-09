@@ -4,7 +4,7 @@
  *
  * @link http://getbootstrap.com/components/#media
  */
-class sprig_Walker_Comment extends Walker_Comment {
+class twiggy_Walker_Comment extends Walker_Comment {
   function start_lvl(&$output, $depth = 0, $args = array()) {
     $GLOBALS['comment_depth'] = $depth + 1; ?>
     <ul <?php comment_class('media list-unstyled comment-' . get_comment_ID()); ?>>
@@ -35,15 +35,15 @@ class sprig_Walker_Comment extends Walker_Comment {
     <div class="media-body">
     <h4 class="media-heading"><?php echo get_comment_author_link(); ?>
         <small>
-	        <time datetime="<?php echo get_comment_date('c'); ?>"><?php printf(__('%1$s', 'sprig'), get_comment_date(),  get_comment_time()); ?></time> at <?php comment_time('G:i A'); ?>
+	        <time datetime="<?php echo get_comment_date('c'); ?>"><?php printf(__('%1$s', 'twiggy'), get_comment_date(),  get_comment_time()); ?></time> at <?php comment_time('G:i A'); ?>
         </small>
     </h4>
 
-    <?php edit_comment_link(__('(Edit)', 'sprig'), '', ''); ?>
+    <?php edit_comment_link(__('(Edit)', 'twiggy'), '', ''); ?>
 
     <?php if ($comment->comment_approved == '0') : ?>
       <div class="alert alert-info">
-        <?php _e('Your comment is awaiting moderation.', 'sprig'); ?>
+        <?php _e('Your comment is awaiting moderation.', 'twiggy'); ?>
       </div>
     <?php endif; ?>
 
@@ -63,10 +63,10 @@ class sprig_Walker_Comment extends Walker_Comment {
   }
 }
 
-function sprig_get_avatar($avatar, $type) {
+function twiggy_get_avatar($avatar, $type) {
   if (!is_object($type)) { return $avatar; }
 
   $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
   return $avatar;
 }
-add_filter('get_avatar', 'sprig_get_avatar', 10, 2);
+add_filter('get_avatar', 'twiggy_get_avatar', 10, 2);

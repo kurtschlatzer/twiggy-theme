@@ -1,45 +1,54 @@
 // == Gulp Require Modules == //
-var gulp =            require('gulp'),
-    sass =            require('gulp-ruby-sass'),
-    autoprefixer =    require('gulp-autoprefixer'),
-    cssmin =          require('gulp-cssmin'),
-    rename =          require('gulp-rename'),
-    concat =          require('gulp-concat'),
-    uglify =          require('gulp-uglify'),
-    livereload =      require('gulp-livereload'),
-    plumber =         require('gulp-plumber'),
-    imagemin =        require('gulp-imagemin'),
-    pngcrush =        require('imagemin-pngcrush'),
-    mainBowerFiles =  require('main-bower-files'),
-    filter =          require('gulp-filter'),
-    clean =           require('gulp-clean');
+var gulp = require('gulp'),
+  autoprefixer = require('gulp-autoprefixer'),
+  clean = require('gulp-clean'),
+  concat = require('gulp-concat'),
+  cssmin = require('gulp-cssmin'),
+  filter = require('gulp-filter'),
+  imagemin = require('gulp-imagemin'),
+  livereload = require('gulp-livereload'),
+  mainBowerFiles = require('main-bower-files'),
+  plumber = require('gulp-plumber'),
+  pngcrush = require('imagemin-pngcrush'),
+  rename = require('gulp-rename'),
+  sass = require('gulp-ruby-sass'),
+  uglify = require('gulp-uglify');
 
 // == Clean Tasks == //
+gulp.task('clean-tmp', function() {
+  return gulp.src('dist/tmp/', {
+      read: false
+    })
+    .pipe(clean());
+});
+gulp.task('clean-scripts', function() {
+  return gulp.src('dist/js/*.js', {
+      read: false
+    })
+    .pipe(clean());
+});
+gulp.task('clean-styles', function() {
+  return gulp.src('dist/css/*.css', {
+      read: false
+    })
+    .pipe(clean());
+});
+gulp.task('clean-images', function() {
+  return gulp.src('dist/img/*', {
+      read: false
+    })
+    .pipe(clean());
+});
 
-gulp.task('clean-tmp', function(){
-    return gulp.src('dist/tmp/', {read: false})
-      .pipe(clean());
-});
-gulp.task('clean-scripts', function(){
-    return gulp.src('dist/js/*.js', {read: false})
-      .pipe(clean());
-});
-gulp.task('clean-styles', function(){
-    return gulp.src('dist/css/*.css', {read: false})
-      .pipe(clean());
-});
-gulp.task('clean-images', function(){
-    return gulp.src('dist/img/*', {read: false})
-      .pipe(clean());
-});
-
-// == STYLES TASKS == //
+// == Styles Tasks == //
 
 // = Only compiles SASS and autoprefixes = //
 gulp.task('styles-dev', function() {
   return gulp.src('src/scss/*.scss')
     .pipe(plumber())
-    .pipe(sass({ style: 'expanded' }))
+    .pipe(sass({
+      style: 'expanded'
+    }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
     .pipe(gulp.dest('dist/css/'));
 });
@@ -47,24 +56,25 @@ gulp.task('styles-dev', function() {
 gulp.task('styles-build', function() {
   return gulp.src('src/scss/*.scss')
     .pipe(plumber())
-    .pipe(sass({ style: 'expanded' }))
+    .pipe(sass({
+      style: 'expanded'
+    }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
     .pipe(gulp.dest('dist/css/'))
     .pipe(cssmin())
     .pipe(gulp.dest('dist/css/'));
 });
 
+// == Scripts Tasks == //
 
-// == SCRIPTS TASKS == //
-
-// = Only copies over the javascript files and concatinates them = //
-gulp.task('scripts-dev',function(){
+// = Only copy and concatinate the javascript files = //
+gulp.task('scripts-dev', function() {
   return gulp.src('src/js/*.js')
     .pipe(plumber())
     .pipe(concat('main.js'))
     .pipe(gulp.dest('dist/js/'));
 });
-// = Uglifies the javascript files then concatinates them = //
+// = Copy, concatinate and uglify javascript files = //
 gulp.task('scripts-build', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(plumber())
@@ -73,11 +83,10 @@ gulp.task('scripts-build', function() {
     .pipe(gulp.dest('dist/js/'));
 });
 
+// == Vendor Tasks == //
 
-// == VENDOR TASKS == // 
-
-// = Copies and concatinates the development vendor CSS and JS specified in Bower (Read the Docs) = //
-gulp.task('vendor-dev', function(){
+// = Copy and concatinate development vendor libs specified in bower.json = //
+gulp.task('vendor-dev', function() {
   gulp.src(mainBowerFiles())
     .pipe(plumber())
     .pipe(filter('*.js'))
@@ -91,7 +100,7 @@ gulp.task('vendor-dev', function(){
     .pipe(concat('vendor.css'))
     .pipe(gulp.dest('dist/css/'));
 });
-// = Same thing as vendor-dev except we'll uglify the Javascript and cssmin the CSS = //
+// = Copy, concatinate and uglify development vendor libs specified in bower.json = //
 gulp.task('vendor-build', function() {
   gulp.src(mainBowerFiles())
     .pipe(plumber())
@@ -109,39 +118,42 @@ gulp.task('vendor-build', function() {
     .pipe(gulp.dest('dist/css/'));
 });
 
+// == Image Tasks == //
 
-// == IMAGE TASKS == //
-
-// = Any images in the src/img folder are minified then copied over to the dist/img folder = //
-gulp.task('imageminify', function () {
+// = Minify and copy over any images in 'src/img' to 'dist/img' = //
+gulp.task('imageminify', function() {
   return gulp.src('dist/img/*')
-      .pipe(imagemin({
-          progressive: true,
-          svgoPlugins: [{removeViewBox: false}],
-          use: [pngcrush()]
-      }))
-      .pipe(gulp.dest('dist/img/'));
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{
+        removeViewBox: false
+      }],
+      use: [pngcrush()]
+    }))
+    .pipe(gulp.dest('dist/img/'));
 });
 
+// == Watch Tasks == //
 
-// == WATCH TASKS == //
-
-// = Watches all SASS, JS, and the image folder for any changes, then runs the appropriate task. 
+// = Watches all SASS, JS, and the image folder for any changes, then runs the appropriate task.
 // = Also watches all PHP, CSS, JS and the image folder in the dist folder for any changes then triggers livereload
 gulp.task('watch', function() {
   gulp.watch('src/scss/**/*.scss', ['styles-dev']);
   gulp.watch('src/js/**/*.js', ['scripts-dev']);
-
   livereload.listen();
-  gulp.watch('**/*.php').on('change', livereload.changed);
-  gulp.watch('**/*.twig').on('change', livereload.changed);
-  gulp.watch('dist/css/*.css').on('change', livereload.changed);
-  gulp.watch('dist/js/*.js').on('change', livereload.changed);
-  gulp.watch('dist/img/**').on('change', livereload.changed);
+  gulp.watch('**/*.php')
+    .on('change', livereload.changed);
+  gulp.watch('**/*.twig')
+    .on('change', livereload.changed);
+  gulp.watch('dist/css/*.css')
+    .on('change', livereload.changed);
+  gulp.watch('dist/js/*.js')
+    .on('change', livereload.changed);
+  gulp.watch('dist/img/**')
+    .on('change', livereload.changed);
 });
 
-
-// == GULP TASKS == //
+// == Gulp Tasks == //
 
 // = Clean Task = //
 gulp.task('clean', ['clean-styles', 'clean-scripts']);

@@ -2,7 +2,7 @@
 /**
  * Page titles
  */
-function sprig_title($before = '', $after = '' ) {
+function twiggy_title($before = '', $after = '' ) {
 	if ( is_category() ) {
 		$title = sprintf( __( 'Category: %s', '_s' ), single_cat_title( '', false ) );
 	} elseif (is_search()) {

@@ -1,14 +1,12 @@
 {
-  "name": "sprig-wp-theme",
-  "author": "Zach Adams <zach.adams383@gmail.com>",
-  "homepage": "http://zach-adams.com",
+  "name": "twiggy-theme",
+  "author": "Kurt Schlatzer <kurtschlatzer@gmail.com>",
+  "homepage": "http://kurtschlatzer.com",
   "version": "1.0.0",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  }],
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -26,6 +24,6 @@
     "gulp-plumber": "~0.6.6",
     "main-bower-files": "~2.1.0",
     "gulp-filter": "~1.0.2",
-    "gulp-clean":   "~0.3.1"
+    "gulp-clean": "~0.3.1"
   }
 }

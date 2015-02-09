@@ -1,16 +1,11 @@
-{% extends 'layouts/sidebar.twig' %}
+{% extends 'layouts/base.twig' %}
 
 {% block content %}
-    {% for post in posts() %} {{ the_post(post) }}
-        {% include 'content/content-excerpt.twig' %}
-        <hr/>
+<div id="primary" class="content-area">
+  <main id="main" class="site-main" role="main">
+    {% for post in posts() %}{{ the_post(post) }}
+    {% include 'content/content-page.twig' %}
     {% endfor %}
-    {% if posts() is empty %}
-        {% include 'content/content-none.twig' %}
-    {% endif %}
-    {% include 'includes/paging.twig' %}
-{% endblock %}
-
-{% block sidebar %}
-    {% set sidebar = wp.dynamic_sidebar('primary') %}
+  </main><!-- #main -->
+</div><!-- #primary -->
 {% endblock %}

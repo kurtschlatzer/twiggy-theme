@@ -1,8 +1,8 @@
 <?php
     /**
      * NOTICE:
-     * This file contains modifications made by Zach Adams on 11-30-2014.
-     * Modifications will be noted next to original comments.
+     * This file contains modifications made by Kurt Schlatzer on 02-08-2015.
+     * Modifications are noted near original comments.
      */
 	/**
 	 * TwigPress.
@@ -119,7 +119,7 @@
 		 *
 		 * @since     1.0.0
          *
-         * MODIFICATIONS: Removed everything in this function except for init and template_include action and filters
+         * MODIFICATION: Removed everything in this function except for init and template_include action and filters
 		 */
 		private function __construct() {
             # Set up the action for setting up the Twig environment
@@ -210,8 +210,8 @@
 		/**
 		 * A wrapper function for rendering templates
 		 *
-		 * @param   string   $template      The name of the template that is to be rendered
-		 * @param   array    $vals              An array of variables that are to be rendered with the template
+		 * @param   string   $template   The name of the template that is to be rendered
+		 * @param   array    $vals       An array of variables that are to be rendered with the template
 		 *
 		 * @since 1.0.0
 		 */

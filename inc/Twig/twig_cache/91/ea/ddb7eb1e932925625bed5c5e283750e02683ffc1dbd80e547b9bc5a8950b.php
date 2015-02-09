@@ -24,39 +24,34 @@ class __TwigTemplate_91eaddb7eb1e932925625bed5c5e283750e02683ffc1dbd80e547b9bc5a
 <head>
 \t<meta charset=\"utf-8\">
 \t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-    <meta charset=\"";
-        // line 6
-        echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "bloginfo", array(0 => "charset"), "method");
-        echo "\">
-    <link rel=\"pingback\" href=\"";
-        // line 7
-        echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "bloginfo", array(0 => "pingback_url"), "method");
-        echo "\">
+\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 \t<title>";
-        // line 8
+        // line 7
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_title", array(0 => "|", 1 => true, 2 => "right"), "method");
         echo "</title>
-\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-
 \t";
-        // line 11
+        // line 8
         echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "wp_head", array());
         echo "
+\t<link rel=\"pingback\" href=\"";
+        // line 9
+        echo $this->getAttribute((isset($context["wp"]) ? $context["wp"] : null), "bloginfo", array(0 => "pingback_url"), "method");
+        echo "\">
 
-    <script type=\"text/javascript\">
-        WebFontConfig = {
-            google: { families: [ 'Open+Sans::latin' ] }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
+  <script type=\"text/javascript\">
+    WebFontConfig = {
+      google: { families: [ 'Open+Sans::latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
 </head>
 ";
     }
@@ -73,6 +68,6 @@ class __TwigTemplate_91eaddb7eb1e932925625bed5c5e283750e02683ffc1dbd80e547b9bc5a
 
     public function getDebugInfo()
     {
-        return array (  43 => 11,  37 => 8,  33 => 7,  29 => 6,  22 => 2,  19 => 1,);
+        return array (  38 => 9,  34 => 8,  30 => 7,  22 => 2,  19 => 1,);
     }
 }
